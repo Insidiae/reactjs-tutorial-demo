@@ -13,11 +13,11 @@ First, open this [Starter Code](https://codepen.io/gaearon/pen/oWWQNa?editors=00
 This is completely optional and not required for this tutorial!
 
 If you want to follow along the demo on your local device, please do the following:
-1. Navigate to the "my-app" folder.
+1. Clone this repository, and navigate to the "my-app" folder.
 2. Execute `npm install` on the "my-app" folder.
 3. Once the installation is done, run `npm start` on the same folder.
 4. You should see an empty tic-tac-toe field when you open `http://localhost:3000` in the browser. You are now ready to follow along!
 
 ### Accessing Stepped Solutions
 
-Each numbered folder in `stepped-solutions` contains the files for the beginning of each correspondingly numbered video, should you need them. So, if you need any code, pull the appropriate file into your `starter-files` folder.
+Each numbered folder in `stepped-solutions` contains the files after each correspondingly numbered section, should you need them. So, if you need any code, pull the appropriate file into your `my-app` folder.

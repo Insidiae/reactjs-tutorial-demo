@@ -3,13 +3,23 @@ import ReactDOM from 'react-dom';
 import './index.css';
 
 class Square extends React.Component {
+  // TODO: remove the constructor
+  constructor(props) {
+    super(props);
+    this.state = {
+      value: null,
+    };
+  }
+
+  // TODO: use onClick={this.props.onClick}
+  // TODO: replace this.state.value with this.props.value
   render() {
     return (
       <button
         className="square"
-        onClick={() => this.props.onClick()}
+        onClick={() => this.setState({ value: 'X' })}
       >
-        {this.props.value}
+        {this.state.value}
       </button>
     );
   }
@@ -23,19 +33,8 @@ class Board extends React.Component {
     };
   }
 
-  handleClick(i) {
-    const squares = [...this.state.squares];
-    squares[i] = "X";
-    this.setState({squares});
-  }
-
   renderSquare(i) {
-    return (
-      <Square
-        value={this.state.squares[i]}
-        onClick={() => this.handleClick(i)}
-      />
-    );
+    return <Square value={this.state.squares[i]} />;
   }
 
   render() {
