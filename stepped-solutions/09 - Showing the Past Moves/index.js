@@ -53,13 +53,12 @@ class Game extends React.Component {
       history: [{
         squares: Array(9).fill(null),
       }],
-      stepNumber: 0,
       xIsNext: true,
     };
   }
 
   handleClick(i) {
-    const history = this.state.history.slice(0, this.state.stepNumber + 1);
+    const history = this.state.history;
     const current = history[history.length - 1];
     const squares = [...current.squares];
     if(calculateWinner(squares) || squares[i]) {
@@ -70,21 +69,13 @@ class Game extends React.Component {
       history: history.concat([{
         squares,
       }]),
-      stepNumber: history.length,
       xIsNext: !this.state.xIsNext,
-    });
-  }
-
-  jumpTo(step) {
-    this.setState({
-      stepNumber: step,
-      xIsNext: (step % 2) === 0,
     });
   }
 
   render() {
     const history = this.state.history;
-    const current = history[this.state.stepNumber];
+    const current = history[history.length - 1];
     const winner = calculateWinner(current.squares);
 
     const moves = history.map((step, move) => {
@@ -92,11 +83,8 @@ class Game extends React.Component {
         `Go to move #${move}` :
         "Go to game start";
 
-        //! Using the array index as a key is problematic when trying to re-order a list’s items or inserting/removing list items.
-        //! Explicitly passing key={move} silences the warning but has the same problems as array indices and is not recommended in most cases.
-        //! However, in this case the moves are never re-ordered, deleted, or inserted in the middle, so it’s safe to use the move index as a key.
         return (
-          <li key={move}>
+          <li>
             <button onClick={() => this.jumpTo(move)}>
               {desc}
             </button>
